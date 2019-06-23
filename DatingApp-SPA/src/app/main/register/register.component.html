@@ -1,0 +1,30 @@
+<form class="w-75" [formGroup]="registerForm" (submit)="register()">
+  <h2 class="text-center text-primary">Registre-se</h2>
+  <hr />
+
+  <div class="form-group">
+    <input
+      type="text"
+      required
+      class="form-control"
+      placeholder="Usuário"
+      formControlName="username"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="password"
+      required
+      maxlength="8"
+      class="form-control"
+      placeholder="Senha"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success mr-2" type="submit">Registrar</button>
+    <button class="btn" type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>

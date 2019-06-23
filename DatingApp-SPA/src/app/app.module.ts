@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
-import { ValueModule } from './main/value/value.module';
+import { NavModule } from './layout/nav/nav.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { ValueModule } from './main/value/value.module';
 
     // Custom Modules
     MainModule,
-    ValueModule
+    NavModule
   ],
   bootstrap: [AppComponent]
 })

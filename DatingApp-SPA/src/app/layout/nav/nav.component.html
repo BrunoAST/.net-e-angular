@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Dating App</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Matches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Listas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Mensagens</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()">Sair</a>
+    </li>
+  </ul>
+
+  <div class="dropdown" *ngIf="loggedIn()">
+    <a class="dropdown-toggle text-light">
+      Welcome User
+    </a>
+
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Editar Perfil</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Sair</a>
+    </div>
+  </div>
+
+  <form
+    *ngIf="!loggedIn()"
+    [formGroup]="loginForm"
+    class="form-inline my-2 my-lg-0"
+    (submit)="login()"
+  >
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      required
+      placeholder="Usuário"
+      formControlName="username"
+    />
+    <input
+      class="form-control mr-sm-2"
+      type="password"
+      required
+      maxlength="8"
+      placeholder="Senha"
+      formControlName="password"
+    />
+    <button class="btn btn-success my-2 my-sm-0" type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </form>
+</nav>
