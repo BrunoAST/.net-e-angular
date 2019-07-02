@@ -59,3 +59,4 @@ typings/
 
 # next.js build output
 .next
+DatingApp.API/.vs/DatingApp.API/v16/Server/sqlite3/db.lock
