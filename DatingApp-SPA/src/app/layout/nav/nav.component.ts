@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
@@ -16,7 +17,8 @@ export class NavComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +31,8 @@ export class NavComponent implements OnInit {
         this.alertify.success('Logged in Successfully');
         this.loginForm.reset();
       },
-      (err: HttpErrorResponse) => this.alertify.error(err.toString())
+      (err: HttpErrorResponse) => this.alertify.error(err.toString()),
+      () => this.router.navigate(['/members'])
     );
   }
 
@@ -40,6 +43,7 @@ export class NavComponent implements OnInit {
   logout(): void {
     localStorage.removeItem('token');
     this.alertify.message('logged out');
+    this.router.navigate(['/home']);
   }
 
   private _buildForm(): void {
