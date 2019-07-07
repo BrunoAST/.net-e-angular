@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { RegisterModel } from 'src/app/models/register.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'da-register',
@@ -15,7 +16,11 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private alertify: AlertifyService
+  ) {}
 
   ngOnInit(): void {
     this._buildForm();
@@ -26,14 +31,13 @@ export class RegisterComponent implements OnInit {
     this.authService
       .register(data)
       .subscribe(
-        () => console.log('registration successful'),
-        (err: HttpErrorResponse) => console.log(err)
+        () => this.alertify.success('registration successful'),
+        (err: HttpErrorResponse) => this.alertify.error(err.error)
       );
   }
 
   cancel(): void {
     this.cancelRegister.emit(false);
-    console.log('Canceled');
   }
 
   private _buildForm(): void {

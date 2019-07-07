@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'da-nav',
@@ -14,7 +15,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    public authService: AuthService,
+    private alertify: AlertifyService
   ) {}
 
   ngOnInit(): void {
@@ -22,25 +24,22 @@ export class NavComponent implements OnInit {
   }
 
   login(): void {
-    this.authService
-      .login(this.loginForm.value)
-      .subscribe(
-        () => {
-          console.log('Logged in Successfully');
-          this.loginForm.reset();
-        },
-        (err: HttpErrorResponse) => console.log(err)
-      );
+    this.authService.login(this.loginForm.value).subscribe(
+      () => {
+        this.alertify.success('Logged in Successfully');
+        this.loginForm.reset();
+      },
+      (err: HttpErrorResponse) => this.alertify.error(err.toString())
+    );
   }
 
   loggedIn(): boolean {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout(): void {
     localStorage.removeItem('token');
-    console.log('logged out');
+    this.alertify.message('logged out');
   }
 
   private _buildForm(): void {
