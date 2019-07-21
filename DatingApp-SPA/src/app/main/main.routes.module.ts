@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthGuard } from '../core/guards/auth.guard';
+import { MemberDetailResolver } from '../resolvers/member-detail.resolver';
+import { MemberListResolver } from '../resolvers/member-list.resolver';
 
 const ROUTES: Routes = [
   {
@@ -15,7 +18,17 @@ const ROUTES: Routes = [
     children: [
       {
         path: 'members',
-        loadChildren: './member-list/member-list.module#MemberListModule'
+        loadChildren: './members/member-list/member-list.module#MemberListModule',
+        resolve: {
+          users: MemberListResolver
+        }
+      },
+      {
+        path: 'members/:id',
+        loadChildren: './members/member-detail/member-detail.module#MemberDetailModule',
+        resolve: {
+          user: MemberDetailResolver
+        }
       },
       {
         path: 'messages',
