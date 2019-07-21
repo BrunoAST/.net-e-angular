@@ -1,4 +1,5 @@
-﻿using DatingApp.API.Data;
+﻿using AutoMapper;
+using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -27,13 +28,21 @@ namespace DatingApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             // Realiza conexão com a base de dados.
-            services.AddDbContext<DataContext>(x => 
+            services.AddDbContext<DataContext>(x =>
                 x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling =
+                                Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // Configurações para CORS.
             services.AddCors();
+
+            // Automapper.
+            services.AddAutoMapper();
+
+            // Dados mockados para popular a tabela de usuários.
+            services.AddTransient<Seed>();
 
             // Autenticação com JWT.
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -57,9 +66,10 @@ namespace DatingApp.API
             // Quando 'IAuthRepository' for injetado em uma classe, a implementação dos métodos
             // de 'AuthRepository' serão usados por esta interface.
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -68,8 +78,10 @@ namespace DatingApp.API
             else
             {
                 // Tratamento global de erros.
-                app.UseExceptionHandler(builder => {
-                    builder.Run(async context => {
+                app.UseExceptionHandler(builder =>
+                {
+                    builder.Run(async context =>
+                    {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                         var error = context.Features.Get<IExceptionHandlerFeature>();
@@ -86,6 +98,9 @@ namespace DatingApp.API
                 // app.UseHsts();
             }
 
+            // Dados mockados para popular tabela de usuários.
+            // seeder.SeedUsers();
+            
             // app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
