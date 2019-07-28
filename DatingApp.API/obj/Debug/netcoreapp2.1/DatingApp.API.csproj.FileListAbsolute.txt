@@ -26,3 +26,17 @@ C:\Users\Bruno\Documents\GitHub\Udemy\.net-e-angular\DatingApp.API\obj\Debug\net
 C:\Users\Bruno\Documents\GitHub\Udemy\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.RazorTargetAssemblyInfo.cache
 C:\Users\Bruno\Documents\GitHub\Udemy\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.dll
 C:\Users\Bruno\Documents\GitHub\Udemy\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.pdb
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\bin\Debug\netcoreapp2.1\DatingApp.API.deps.json
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\bin\Debug\netcoreapp2.1\DatingApp.API.runtimeconfig.json
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\bin\Debug\netcoreapp2.1\DatingApp.API.runtimeconfig.dev.json
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\bin\Debug\netcoreapp2.1\DatingApp.API.dll
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\bin\Debug\netcoreapp2.1\DatingApp.API.pdb
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.csprojAssemblyReference.cache
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.csproj.CoreCompileInputs.cache
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.RazorAssemblyInfo.cache
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.RazorAssemblyInfo.cs
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.AssemblyInfoInputs.cache
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.AssemblyInfo.cs
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.RazorTargetAssemblyInfo.cache
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.dll
+C:\Users\bruno\Documents\Github\.net-e-angular\DatingApp.API\obj\Debug\netcoreapp2.1\DatingApp.API.pdb
