@@ -1,5 +1,5 @@
 export class UserTokenInformationModel {
-  nameid: any;
+  nameid: number;
   // tslint:disable-next-line: variable-name
   unique_name: string;
   nbf: number;

@@ -15,7 +15,7 @@ import { UserTokenInformationModel } from '../models/user-token-information.mode
 })
 export class AuthService {
   private jwtHelper = new JwtHelperService();
-  public dedodedToken: UserTokenInformationModel;
+  public decodedToken: UserTokenInformationModel;
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class AuthService {
       map((user: any) => {
         if (user) {
           localStorage.setItem('token', user.token);
-          this.dedodedToken = this.jwtHelper.decodeToken(user.token);
+          this.decodedToken = this.jwtHelper.decodeToken(user.token);
         }
       })
     );

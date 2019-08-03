@@ -1,0 +1,104 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Seu perfil</h1>
+    </div>
+    <div class="col-sm-8">
+      <div class="alert alert-info" *ngIf="form.dirty">
+        <strong>Informação</strong> Você realizou alterações em seu perfil.
+        Alterações não salvas serão descartadas!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img
+          class="card-img-top img-thumbnail"
+          [src]="user.photoUrl"
+          [alt]="user.username"
+        />
+        <div class="card-body">
+          <div>
+            <strong>Localização:</strong>
+            <p>{{ user.city }}, {{ user.country }}</p>
+          </div>
+          <div>
+            <strong>Idade:</strong>
+            <p>{{ user.age }}</p>
+          </div>
+          <div>
+            <strong>Última atividade:</strong>
+            <p>{{ user.lastActive }}</p>
+          </div>
+          <div>
+            <strong>Membro desde:</strong>
+            <p>{{ user.created }}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button
+            [disabled]="!form.dirty"
+            (click)="updateUser()"
+            class="btn btn-success btn-block"
+          >
+            Salvar alterações
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Editar perfil">
+            <form [formGroup]="form">
+              <h4>Descrição</h4>
+              <textarea
+                rows="6"
+                class="form-control"
+                formControlName="introdoction"
+              ></textarea>
+
+              <h4>Procurando por</h4>
+              <textarea
+                rows="6"
+                class="form-control"
+                formControlName="lookingFor"
+              ></textarea>
+
+              <h4>Interesses</h4>
+              <textarea
+                rows="6"
+                class="form-control"
+                formControlName="interests"
+              ></textarea>
+
+              <h4>Detalhes de localização:</h4>
+              <div class="form-inline">
+                <label for="city">Cidade</label>
+                <input
+                  id="city"
+                  class="form-control"
+                  type="text"
+                  formControlName="city"
+                />
+
+                <label for="country">País</label>
+                <input
+                  id="country"
+                  class="form-control"
+                  type="text"
+                  formControlName="country"
+                />
+              </div>
+            </form>
+          </tab>
+
+          <tab heading="Editar fotos">
+            <p>Aqui ficará a edição de fotos</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

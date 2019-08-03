@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { MemberDetailResolver } from '../resolvers/member-detail.resolver';
 import { MemberListResolver } from '../resolvers/member-list.resolver';
+import { MemberEditResolver } from '../resolvers/member-edit.resolver';
+import { PreventUnsavedChangesGuard } from '../core/guards/prevent-unsaved-changes.guard';
 
 const ROUTES: Routes = [
   {
@@ -28,6 +30,13 @@ const ROUTES: Routes = [
         loadChildren: './members/member-detail/member-detail.module#MemberDetailModule',
         resolve: {
           user: MemberDetailResolver
+        }
+      },
+      {
+        path: 'member/edit',
+        loadChildren: './members/member-edit/member-edit.module#MemberEditModule',
+        resolve: {
+          user: MemberEditResolver
         }
       },
       {
