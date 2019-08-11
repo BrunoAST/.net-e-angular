@@ -38,6 +38,9 @@ namespace DatingApp.API
             // Configurações para CORS.
             services.AddCors();
 
+            // Configurações para upload de imagens.
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             // Automapper.
             services.AddAutoMapper();
 

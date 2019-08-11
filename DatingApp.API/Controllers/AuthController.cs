@@ -1,4 +1,5 @@
-﻿using DatingApp.API.Data;
+﻿using AutoMapper;
+using DatingApp.API.Data;
 using DatingApp.API.DTO;
 using DatingApp.API.Models;
 using DatingApp.API.Utils;
@@ -15,11 +16,13 @@ namespace DatingApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _repo = repo;
             _config = config;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -51,9 +54,12 @@ namespace DatingApp.API.Controllers
 
             var tokenGenerator = new JWTGenerator(_config);
 
+            var user = _mapper.Map<UserForListDto>(userFromRepo);
+
             // O token gerado é enviado para o cliente.
             return Ok(new {
-                token = tokenGenerator.GenerateToken(userFromRepo.Username, userFromRepo.Id)
+                token = tokenGenerator.GenerateToken(userFromRepo.Username, userFromRepo.Id),
+                user
             });
         }
     }

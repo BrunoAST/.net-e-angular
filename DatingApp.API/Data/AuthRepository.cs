@@ -16,7 +16,8 @@ namespace DatingApp.API.Data
         public async Task<User> Login(string username, string password)
         {
             // Retorna o usuário da base de dados que tiver um username igual ao 'username' pesquisado.
-            var user = await _dataContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _dataContext.Users.Include(p => p.Photos)
+                      .FirstOrDefaultAsync(x => x.Username == username);
 
             if (user == null)
                 return null;

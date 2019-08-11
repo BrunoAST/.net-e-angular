@@ -15,14 +15,21 @@
     </ul>
 
     <div class="dropdown" *ngIf="loggedIn()" dropdown>
+      <span class="mr-1">
+        <img [src]="photoUrl" alt="" />
+      </span>
       <a class="dropdown-toggle text-light" dropdownToggle>
-        Bem-vindo(a) {{ authService.dedodedToken?.unique_name | titlecase }}
+        Bem-vindo(a) {{ authService.decodedToken?.unique_name | titlecase }}
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i>Editar Perfil</a>
+        <a class="dropdown-item" [routerLink]="['/member/edit']"
+          ><i class="fa fa-user"></i>Editar Perfil</a
+        >
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Sair</a>
+        <a class="dropdown-item" (click)="logout()"
+          ><i class="fa fa-sign-out"></i>Sair</a
+        >
       </div>
     </div>
 
@@ -47,7 +54,11 @@
         placeholder="Senha"
         formControlName="password"
       />
-      <button class="btn btn-success my-2 my-sm-0" type="submit" [disabled]="!loginForm.valid">
+      <button
+        class="btn btn-success my-2 my-sm-0"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
         Login
       </button>
     </form>

@@ -13,6 +13,7 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 })
 export class NavComponent implements OnInit {
   loginForm: FormGroup;
+  photoUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,12 +24,16 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this._buildForm();
+
+    this.authService.currentPhotoUrl.subscribe(
+      photoUrl => (this.photoUrl = photoUrl)
+    );
   }
 
   login(): void {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
-        this.alertify.success('Logged in Successfully');
+        this.alertify.success('Login realizado com sucesso!');
         this.loginForm.reset();
       },
       (err: HttpErrorResponse) => this.alertify.error(err.toString()),
@@ -42,7 +47,10 @@ export class NavComponent implements OnInit {
 
   logout(): void {
     localStorage.removeItem('token');
-    this.alertify.message('logged out');
+    localStorage.removeItem('user');
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
+    this.alertify.message('Logout realizado com sucesso!');
     this.router.navigate(['/home']);
   }
 
