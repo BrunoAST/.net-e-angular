@@ -1,12 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import {
+  BsDropdownModule,
+  TabsModule,
+  BsDatepickerModule
+} from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
-  imports: [CommonModule, BsDropdownModule.forRoot(), TabsModule.forRoot(), NgxGalleryModule],
-  exports: [BsDropdownModule, TabsModule, NgxGalleryModule, FileUploadModule]
+  imports: [
+    CommonModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    NgxGalleryModule
+  ],
+  exports: [
+    BsDropdownModule,
+    TabsModule,
+    BsDatepickerModule,
+    NgxGalleryModule,
+    FileUploadModule
+  ]
 })
 export class SharedModule {}
