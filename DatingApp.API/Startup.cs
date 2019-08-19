@@ -70,6 +70,7 @@ namespace DatingApp.API
             // de 'AuthRepository' serão usados por esta interface.
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<LogUserActivity>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)

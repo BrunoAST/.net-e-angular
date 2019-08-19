@@ -8,6 +8,7 @@ import {
 } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 @NgModule({
   imports: [
@@ -17,12 +18,14 @@ import { FileUploadModule } from 'ng2-file-upload';
     BsDatepickerModule.forRoot(),
     NgxGalleryModule
   ],
+  declarations: [TimeAgoPipe],
   exports: [
     BsDropdownModule,
     TabsModule,
     BsDatepickerModule,
     NgxGalleryModule,
-    FileUploadModule
+    FileUploadModule,
+    TimeAgoPipe
   ]
 })
 export class SharedModule {}
