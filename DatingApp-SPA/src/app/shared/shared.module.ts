@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import {
   BsDropdownModule,
   TabsModule,
-  BsDatepickerModule
+  BsDatepickerModule,
+  PaginationModule,
+  ButtonsModule
 } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -16,7 +18,9 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   declarations: [TimeAgoPipe],
   exports: [
@@ -25,7 +29,9 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     BsDatepickerModule,
     NgxGalleryModule,
     FileUploadModule,
-    TimeAgoPipe
+    TimeAgoPipe,
+    PaginationModule,
+    ButtonsModule
   ]
 })
 export class SharedModule {}

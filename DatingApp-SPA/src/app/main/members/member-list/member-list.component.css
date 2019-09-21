@@ -1,0 +1,11 @@
+input {
+  width: 70px;
+}
+
+select {
+  width: 130px;
+}
+
+button {
+  margin-left: 10px;
+}

@@ -10,6 +10,9 @@ import { AlertifyService } from '../services/alertify.service';
 
 @Injectable({ providedIn: 'root' })
 export class MemberListResolver implements Resolve<User[]> {
+  pageNumber = 1;
+  pageSize = 5;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -17,7 +20,7 @@ export class MemberListResolver implements Resolve<User[]> {
   ) {}
 
   resolve(): Observable<User[]> {
-    return this.userService.getUsers().pipe(
+    return this.userService.getUsers(this.pageNumber, this.pageSize).pipe(
       catchError(() => {
         this.alertify.error('Erro ao recuperar os dados');
         this.router.navigate(['/home']);

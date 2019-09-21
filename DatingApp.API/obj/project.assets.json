@@ -12252,23 +12252,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bruno\\.nuget\\packages\\": {},
+    "C:\\Users\\Bruno\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bruno\\Documents\\Github\\.net-e-angular\\DatingApp.API\\DatingApp.API.csproj",
+      "projectUniqueName": "C:\\Users\\Bruno\\Documents\\GitHub\\Udemy\\.net-e-angular\\DatingApp.API\\DatingApp.API.csproj",
       "projectName": "DatingApp.API",
-      "projectPath": "C:\\Users\\bruno\\Documents\\Github\\.net-e-angular\\DatingApp.API\\DatingApp.API.csproj",
-      "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bruno\\Documents\\Github\\.net-e-angular\\DatingApp.API\\obj\\",
+      "projectPath": "C:\\Users\\Bruno\\Documents\\GitHub\\Udemy\\.net-e-angular\\DatingApp.API\\DatingApp.API.csproj",
+      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bruno\\Documents\\GitHub\\Udemy\\.net-e-angular\\DatingApp.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12316,6 +12316,7 @@
             "version": "[2.1.0, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
